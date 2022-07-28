@@ -4,7 +4,7 @@ import axios from "axios";
 export const getTodoAsync = createAsyncThunk(
   "todos/getTodosAsync",
   async () => {
-    const res = await axios(`${process.env.React_APP_API_BASE_ENDPOINT}/todos`);
+    const res = await axios(`https://todo-aydin.herokuapp.com/api/todos`);
     return res.data;
   }
 );
@@ -13,7 +13,7 @@ export const addTodoAsync = createAsyncThunk(
   "todos/addTodosAsync",
   async (data) => {
     const res = await axios.post(
-      `${process.env.React_APP_API_BASE_ENDPOINT}/todos`,
+      `https://todo-aydin.herokuapp.com/api/todos`,
       data
     );
     return res.data;
@@ -24,7 +24,7 @@ export const toggleTodoAsync = createAsyncThunk(
   "todos/toggleTodosAsync",
   async ({ id, data }) => {
     const res = await axios.patch(
-      `${process.env.React_APP_API_BASE_ENDPOINT}/todos/${id}`,
+      `https://todo-aydin.herokuapp.com/api/todos/${id}`,
       data
     );
     return res.data;
@@ -34,9 +34,7 @@ export const toggleTodoAsync = createAsyncThunk(
 export const removeTodoAsync = createAsyncThunk(
   "todos/removeTodoAsync",
   async (id) => {
-    await axios.delete(
-      `${process.env.React_APP_API_BASE_ENDPOINT}/todos/${id}`
-    );
+    await axios.delete(`https://todo-aydin.herokuapp.com/api/todos/${id}`);
 
     return id;
   }
